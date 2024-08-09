@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+      }
+      button {
+        background-color: #1223EA; /* Azul */
+        border: 4;
+        border-radius: 8px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #5490EB;
+      }
+      #mensaje {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+      }
+    </style>
+    <script>
+      function actualizarResumen() {
+        google.script.run.withSuccessHandler(mostrarMensaje).actualizarResumen();
+      }
+      
+      function mostrarMensaje(mensaje) {
+        document.getElementById('mensaje').innerText = mensaje;
+      }
+      
+      function irAlEnlace() {
+      google.script.run.withSuccessHandler(function(url) {
+        window.open(url, '_blank');
+      }).abrirHoja();
+      }
+    </script>
+  </head>
+    <img src="https://www.placecol.com.co/wp-content/uploads/2021/03/logo-placecol-2@2x.png" alt="Logo Placecol" style="width:520px;height:auto;center">
+  <body>
+    <h1>Resumen gerencial de Encerdado</h1>
+    <p1><br>Al actualizar se extraen de las hojas de planeacion las ultimas 10 filas<br>
+      que tengan ordenes generadas lo que permite conocer el estado de las<br>
+      maquinas y sus respectivos montajes.<br><br>                   By Oscar Gallo<br><br><br>
+    </p1>
+    <button onclick="actualizarResumen()">Actualizar</button>
+    <button onclick="irAlEnlace()">Ir a la Hoja de Cálculo</button>
+    <p id="mensaje"></p>
+  </body>
+</html>
